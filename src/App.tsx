@@ -1,22 +1,61 @@
+import { Download, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+
 const summaryItems = [
-  "UXE Designer, com +10 anos de experiência em UX/UI, Front/Back-end e CRO.",
-  "Especialista em e-commerces, criação de interfaces, LPS e Aquisição CRO.",
-  "Prototipagem (Figma, Framer), HTML, CSS, JS e GTM. Capaz de integrar soluções digitais com foco em performance, experiência e resultado.",
-  "Especializando em AI, IDEs, Vibe Coding etc.",
+  "Especialista em e-commerce, CRO | UX/UI, Front-end, Acquisition e Integrações, com +11 anos de trajetória em design e marketing digital.",
+  "Idealizo e direciono experiências digitais orientadas a funil de conversão, KPIs e evolução contínua de resultado.",
+  "Conecto tracking, front-end e sustentação operacional na evolução de e-commerces, LPs e jornadas de negócio.",
+  "Atuo com UX/UI para e-commerce, LPs e produtos digitais, prototipação em Figma e Framer, GTM, testes A/B, integrações como Salesforce, Wake, VTEX e Shopify, e evolução com AI, IDEs e Vibe Coding.",
 ];
 
 const contactItems = [
-  "Belo Horizonte, Brasil",
-  "phaison.uxe@gmail.com",
-  "+55 31 99203-1320",
-  "https://www.linkedin.com/in/phaisonvieiradesigner/",
-];
+  {
+    kind: "text",
+    label: "Contagem, Brasil",
+    icon: MapPin,
+  },
+  {
+    kind: "link",
+    label: "phaison.uxe@gmail.com",
+    href: "mailto:phaison.uxe@gmail.com",
+    icon: Mail,
+  },
+  {
+    kind: "link",
+    label: "+55 31 99203-1320",
+    href: "https://wa.me/5531992031320?text=Olá%2C%20vi%20seu%20currículo",
+    icon: Phone,
+    target: "_blank",
+    rel: "noreferrer",
+  },
+  {
+    kind: "link",
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/phaisonvieiradesigner/",
+    icon: Linkedin,
+    target: "_blank",
+    rel: "noreferrer",
+  },
+] as const;
+
+const downloadActions = [
+  {
+    label: "PDF",
+    href: "/curriculo-phaison.pdf",
+    download: "Curriculo Phaison.pdf",
+  },
+  {
+    label: "Word",
+    href: "/curriculo-phaison.docx",
+    download: "Curriculo Phaison.docx",
+  },
+] as const;
 
 const experiences = [
   {
     title: "PO/UX/UI/Front-ender de E-commerces - Atuação Híbrida",
     period: "2020 – Até o momento",
     company: "Grupo Mysa - ABC da Construção",
+    current: true,
     bullets: [
       "Atuei na criação e evolução de 4 e-commerce com UX/UI, Front/Back-end e CRO.",
       "Atuei como PO de integrações: backlog, prioridades e sprints, clientes e agências.",
@@ -46,7 +85,7 @@ const experiences = [
       "Organização de demandas e fluxo de trabalho do time.",
     ],
   },
-];
+] as const;
 
 const education = {
   title: "Superior em Design Gráfico",
@@ -69,12 +108,32 @@ export default function App() {
       <article data-ui="resume-sheet">
         <header data-ui="resume-header">
           <h1 data-ui="resume-title-large">PHAISON VIEIRA SIMÕES</h1>
-          <div data-ui="resume-metadata-group">
-            {contactItems.map((item) => (
-              <p key={item} data-ui="resume-metadata">
-                {item}
-              </p>
-            ))}
+          <div data-ui="resume-contact-group">
+            {contactItems.map((item) => {
+              const Icon = item.icon;
+
+              if (item.kind === "link") {
+                return (
+                  <a
+                    key={item.label}
+                    data-ui="resume-contact-link"
+                    href={item.href}
+                    rel={item.rel}
+                    target={item.target}
+                  >
+                    <Icon aria-hidden="true" size={14} />
+                    <span>{item.label}</span>
+                  </a>
+                );
+              }
+
+              return (
+                <span key={item.label} data-ui="resume-contact-text">
+                  <Icon aria-hidden="true" size={14} />
+                  <span>{item.label}</span>
+                </span>
+              );
+            })}
           </div>
         </header>
 
@@ -101,7 +160,11 @@ export default function App() {
           </h2>
 
           {experiences.map((experience) => (
-            <article key={experience.title} data-ui="resume-entry">
+            <article
+              key={experience.title}
+              data-current={experience.current ? "true" : undefined}
+              data-ui="resume-entry"
+            >
               <div data-ui="resume-entry-header">
                 <h3 data-ui="resume-entry-title">{experience.title}</h3>
                 <span data-ui="resume-metadata">{experience.period}</span>
@@ -162,6 +225,20 @@ export default function App() {
           <p data-ui="resume-paragraph">Inglês – Básico</p>
         </section>
       </article>
+
+      <div data-ui="resume-floating-actions" aria-label="Baixar currículo">
+        {downloadActions.map((action) => (
+          <a
+            key={action.label}
+            data-ui="resume-floating-action"
+            href={action.href}
+            download={action.download}
+          >
+            <Download aria-hidden="true" size={14} />
+            <span>{action.label}</span>
+          </a>
+        ))}
+      </div>
     </main>
   );
 }
