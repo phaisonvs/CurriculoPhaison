@@ -12,6 +12,7 @@ const buildDir = path.join(projectRoot, "build");
 const publicDir = path.join(projectRoot, "public");
 const outputPdfPath = path.join(publicDir, "curriculo-phaison.pdf");
 const buildPdfPath = path.join(buildDir, "curriculo-phaison.pdf");
+const githubPagesBasePath = "/CurriculoPhaison/";
 
 const MIME_TYPES = new Map([
   [".html", "text/html; charset=utf-8"],
@@ -44,6 +45,18 @@ function safeResolve(requestPath) {
   return resolved;
 }
 
+function stripGitHubPagesBasePath(requestPath) {
+  if (requestPath === githubPagesBasePath || requestPath === githubPagesBasePath.slice(0, -1)) {
+    return "/";
+  }
+
+  if (requestPath.startsWith(githubPagesBasePath)) {
+    return `/${requestPath.slice(githubPagesBasePath.length)}`;
+  }
+
+  return requestPath;
+}
+
 async function resolveFilePath(requestPath) {
   const resolved = safeResolve(requestPath);
 
@@ -68,7 +81,7 @@ async function startStaticServer() {
   const server = createServer(async (req, res) => {
     try {
       const url = new URL(req.url ?? "/", "http://127.0.0.1");
-      const requestPath = url.pathname === "/" ? "/index.html" : url.pathname;
+      const requestPath = stripGitHubPagesBasePath(url.pathname === "/" ? "/index.html" : url.pathname);
       const filePath = (await resolveFilePath(requestPath)) ?? path.join(buildDir, "index.html");
       const body = await readFile(filePath);
 

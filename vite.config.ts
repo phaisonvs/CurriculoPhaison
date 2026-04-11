@@ -20,6 +20,7 @@ function figmaAssetResolver() {
 }
 
 export default defineConfig({
+  base: '/CurriculoPhaison/',
   plugins: [react(), figmaAssetResolver()],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
