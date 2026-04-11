@@ -65,12 +65,19 @@ svg {
 [data-ui='resume-header'] {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+}
+
+[data-ui='resume-title-group'] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
 }
 
 [data-ui='resume-title-large'] {
   margin: 0;
-  padding-bottom: 8px;
+  padding-bottom: 0;
   font-size: var(--resume-title-large-size);
   font-weight: 700;
   line-height: 36px;
@@ -129,12 +136,11 @@ svg {
 [data-ui='resume-section'] {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 24px;
 }
 
 [data-ui='resume-section-title'] {
   margin: 0;
-  padding-bottom: 8px;
   font-size: var(--resume-title-small-size);
   font-weight: 700;
   line-height: 21px;
@@ -146,7 +152,13 @@ svg {
 [data-ui='resume-entry'] {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
+}
+
+[data-ui='resume-entry-body'] {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 [data-ui='resume-entry-header'] {
@@ -210,7 +222,7 @@ svg {
 [data-ui='resume-skills-grid'] {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 16px;
+  gap: 8px;
 }
 
 [data-ui='resume-skill-item'] {
@@ -220,8 +232,9 @@ svg {
 
 [data-ui='resume-paragraph'] {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 2px;
   margin: 0;
   font-size: var(--resume-paragraph-size);
   font-weight: 400;
@@ -230,11 +243,24 @@ svg {
   overflow-wrap: anywhere;
 }
 
-[data-ui='resume-paragraph']>span[aria-hidden='true'] {
-  display: inline-flex;
-  flex: 0 0 12px;
-  justify-content: center;
+[data-ui='resume-paragraph'][data-variant='skill'] {
+  gap: 2px;
+}
+
+[data-ui='resume-skill-title'] {
+  display: block;
+  font-size: var(--resume-list-size);
   font-weight: 700;
+  line-height: 18px;
+  color: #111827;
+}
+
+[data-ui='resume-skill-description'] {
+  display: block;
+  font-size: var(--resume-paragraph-size);
+  font-weight: 400;
+  line-height: 18px;
+  color: #374151;
 }
 
 [data-ui='resume-divider'] {
@@ -269,6 +295,9 @@ svg {
   color: #374151;
   text-decoration: none;
   white-space: nowrap;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 [data-ui='resume-floating-action']:hover {
@@ -317,5 +346,83 @@ svg {
 
   [data-ui='resume-skill-item'] {
     flex-basis: 100%;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  body {
+    background: #ffffff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  [data-ui='resume-page'] {
+    padding: 0;
+    background: #ffffff;
+  }
+
+  [data-ui='resume-sheet'] {
+    width: 210mm;
+    max-width: 210mm;
+    min-height: auto;
+    gap: 6px;
+    padding: 18px 32px 8px;
+    box-shadow: none;
+  }
+
+  [data-ui='resume-title-group'] {
+    gap: 0;
+  }
+
+  [data-ui='resume-title-large'] {
+    line-height: 32px;
+  }
+
+  [data-ui='resume-header'] {
+    gap: 4px;
+  }
+
+  [data-ui='resume-section'] {
+    gap: 10px;
+  }
+
+  [data-ui='resume-entry'] {
+    gap: 3px;
+  }
+
+  [data-ui='resume-list'][data-variant='summary'] {
+    gap: 1px;
+  }
+
+  [data-ui='resume-list'][data-variant='entry'] {
+    gap: 0;
+  }
+
+  [data-ui='resume-list'] {
+    padding-left: 16px;
+  }
+
+  [data-ui='resume-section-title'] {
+    line-height: 18px;
+  }
+
+  [data-ui='resume-skills-grid'] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 4px 12px;
+  }
+
+  [data-ui='resume-skill-item'] {
+    min-width: 0;
+  }
+
+  [data-ui='resume-floating-actions'] {
+    display: none !important;
   }
 }
