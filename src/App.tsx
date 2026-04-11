@@ -1,4 +1,4 @@
-import * as DialogPrimitive from "@radix-ui/react-dialog";
+﻿import * as DialogPrimitive from "@radix-ui/react-dialog";
 
 import { useResumeAnalytics } from "@/hooks/useResumeAnalytics";
 import {
@@ -133,11 +133,10 @@ function OutlookBrandIcon({
 }
 
 const summaryItems = [
-  "Especialista em CRO, UX/UI, front-end e integrações, com mais de 11 anos de trajetória em design e marketing digital.",
-  "Atuação na evolução de e-commerces, landing pages e jornadas digitais, conectando experiência, conversão, mensuração e sustentação operacional.",
-  "Perfil híbrido entre prototipação, testes A/B, tracking, implementação front-end e integrações.",
-  "Atuação em ecossistemas como Wake, Salesforce, VTEX e Shopify.",
-  "Vivência na coordenação de frentes multidisciplinares, conectando design, tecnologia, operação e resultado.",
+  "Especialista em CRO, UX/UI, front-end e integra\u00E7\u00F5es, com mais de 11 anos de trajet\u00F3ria em design e marketing digital.",
+  "Atua\u00E7\u00E3o na evolu\u00E7\u00E3o de e-commerces, landing pages e jornadas digitais, conectando experi\u00EAncia, convers\u00E3o, mensura\u00E7\u00E3o e sustenta\u00E7\u00E3o operacional.",
+  "Perfil h\u00EDbrido entre prototipa\u00E7\u00E3o, testes A/B, tracking, implementa\u00E7\u00E3o front-end e integra\u00E7\u00F5es.",
+  "Atua\u00E7\u00E3o em ecossistemas como Wake, Salesforce, VTEX e Shopify, com viv\u00EAncia na coordena\u00E7\u00E3o de frentes multidisciplinares, conectando design, tecnologia, opera\u00E7\u00E3o e resultado.",
 ];
 
 const contactEmailAddress = "phaison.uxe@gmail.com";
@@ -153,6 +152,12 @@ const contactEmailOutlookHref = `https://outlook.office.com/mail/deeplink/compos
 const contactWhatsAppMessage =
   "Olá, Phaison. Vi seu currículo e gostaria de conversar sobre uma oportunidade profissional.";
 const contactWhatsAppHref = `https://wa.me/5531992031320?text=${encodeURIComponent(contactWhatsAppMessage)}`;
+const printContactLine = [
+  "Localiza\u00E7\u00E3o: Contagem, Brasil",
+  `E-mail: ${contactEmailAddress}`,
+  "WhatsApp: +55 31 99203-1320",
+  "LinkedIn: linkedin.com/in/phaisonvieiradesigner",
+].join(" | ");
 
 const education = {
   title: "Superior em Design Gráfico",
@@ -454,6 +459,7 @@ export default function App() {
               Atuação em coordenação de CRO, UX/UI, Front-end e Integrações
             </p>
           </div>
+          <p data-ui="resume-contact-plain">{printContactLine}</p>
           <div data-ui="resume-contact-group">
             {contactItems.map((item) => {
               const Icon = item.icon;
@@ -699,3 +705,4 @@ export default function App() {
     </main>
   );
 }
+

@@ -94,6 +94,17 @@ svg {
   gap: 4px 12px;
 }
 
+[data-ui='resume-contact-plain'] {
+  display: none;
+  margin: 0;
+  font-size: var(--resume-metadata-size);
+  font-weight: 400;
+  line-height: 18px;
+  color: #4b5563;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
 [data-ui='resume-metadata'] {
   margin: 0;
   font-size: var(--resume-metadata-size);
@@ -108,7 +119,7 @@ svg {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: baseline;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 4px;
 }
 
@@ -207,20 +218,20 @@ svg {
 [data-ui='resume-entry-header'] {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 8px;
 }
 
 [data-ui='resume-entry-header'] > [data-ui='resume-metadata'] {
   flex: 0 0 auto;
-  text-align: right;
+  text-align: left;
   white-space: nowrap;
 }
 
 [data-ui='resume-entry-title'] {
   margin: 0;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-width: 0;
   font-size: var(--resume-subtitle-size);
   font-weight: 700;
@@ -711,19 +722,25 @@ svg {
   }
 
   [data-ui='resume-contact-group'] {
-    gap: 5px 10px;
+    display: none;
   }
 
-  [data-ui='resume-contact-text'],
-  [data-ui='resume-contact-link'],
-  [data-ui='resume-contact-action'] {
-    gap: 4px;
-    padding: 5px 9px;
-    font-size: 10.2px;
+  [data-ui='resume-contact-plain'] {
+    display: block;
+    max-width: 100%;
+    line-height: 16px;
+  }
+
+  [data-ui='resume-contact-group'] {
+    gap: 5px 10px;
   }
 
   [data-ui='resume-section'] {
     gap: 11px;
+  }
+
+  [data-ui='resume-entry-header'] {
+    gap: 6px;
   }
 
   [data-ui='resume-entry'] {
@@ -792,7 +809,7 @@ svg {
 
   [data-current='true'] [data-ui='resume-entry-header'] {
     align-items: baseline;
-    gap: 8px;
+    gap: 6px;
   }
 
   [data-current='true'] [data-ui='resume-metadata'] {
@@ -801,7 +818,7 @@ svg {
 
   [data-current='true'] [data-ui='resume-experience-period'] {
     flex-wrap: nowrap;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 2px;
   }
 
