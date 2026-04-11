@@ -127,8 +127,14 @@ async function main() {
       viewport: { width: 1280, height: 1800 },
     });
 
+    await page.addInitScript(() => {
+      window.__RESUME_DISABLE_ANALYTICS__ = true;
+    });
+
     await page.emulateMedia({ media: "print" });
-    await page.goto(`http://127.0.0.1:${port}/`, { waitUntil: "networkidle" });
+    await page.goto(`http://127.0.0.1:${port}/?disable_tracking=1`, {
+      waitUntil: "networkidle",
+    });
     await page.waitForSelector('[data-ui="resume-sheet"]');
     await page.evaluate(async () => {
       await document.fonts.ready;

@@ -1,3 +1,9 @@
+import { useResumeAnalytics } from "@/hooks/useResumeAnalytics";
+import {
+  trackResumeContactClick,
+  trackResumePrintClick,
+  type ResumeContactMethod,
+} from "@/lib/analytics";
 import { Linkedin, Mail, MapPin, Printer } from "lucide-react";
 import type { SVGProps } from "react";
 
@@ -62,12 +68,16 @@ const contactItems = [
     label: "phaison.uxe@gmail.com",
     href: contactEmailHref,
     icon: Mail,
+    contactMethod: "email" as const,
+    target: undefined,
+    rel: undefined,
   },
   {
     kind: "link",
     label: "+55 31 99203-1320",
     href: contactWhatsAppHref,
     icon: WhatsAppIcon,
+    contactMethod: "whatsapp" as const,
     target: "_blank",
     rel: "noreferrer",
   },
@@ -76,6 +86,7 @@ const contactItems = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/phaisonvieiradesigner/",
     icon: Linkedin,
+    contactMethod: "linkedin" as const,
     target: "_blank",
     rel: "noreferrer",
   },
@@ -104,6 +115,7 @@ const experiences = [
     title: "Analista de Marketing Digital",
     period: "2020",
     company: "Grupo Buzatto's",
+    current: false,
     bullets: [
       "Produção de peças e campanhas digitais com foco em aquisição e conversão.",
       "Apoio à estratégia e à execução de marketing digital, incluindo criativos, landing pages e comunicação.",
@@ -114,6 +126,7 @@ const experiences = [
     title: "Coordenador de Design",
     period: "2017 – 2019",
     company: "Kickball",
+    current: false,
     bullets: [
       "Coordenei entregas e a qualidade do design com a equipe, incluindo prazos, revisão e alinhamentos.",
       "Produção de materiais digitais e identidade visual para diferentes clientes.",
@@ -169,7 +182,10 @@ const skills = [
 ] as const;
 
 export default function App() {
+  useResumeAnalytics();
+
   const handlePrint = () => {
+    trackResumePrintClick();
     window.print();
   };
 
@@ -195,6 +211,11 @@ export default function App() {
                     href={item.href}
                     rel={item.rel}
                     target={item.target}
+                    onClick={() => {
+                      trackResumeContactClick(
+                        item.contactMethod as ResumeContactMethod,
+                      );
+                    }}
                   >
                     <Icon aria-hidden="true" size={14} />
                     <span>{item.label}</span>
@@ -214,7 +235,11 @@ export default function App() {
 
         <div data-ui="resume-divider" aria-hidden="true" />
 
-        <section data-ui="resume-section" aria-labelledby="summary-title">
+        <section
+          data-ui="resume-section"
+          data-analytics-section="summary"
+          aria-labelledby="summary-title"
+        >
           <h2 id="summary-title" data-ui="resume-section-title">
             Resumo Profissional
           </h2>
@@ -229,7 +254,11 @@ export default function App() {
 
         <div data-ui="resume-divider" aria-hidden="true" />
 
-        <section data-ui="resume-section" aria-labelledby="experience-title">
+        <section
+          data-ui="resume-section"
+          data-analytics-section="experience"
+          aria-labelledby="experience-title"
+        >
           <h2 id="experience-title" data-ui="resume-section-title">
             Experiência Profissional
           </h2>
@@ -260,7 +289,11 @@ export default function App() {
 
         <div data-ui="resume-divider" aria-hidden="true" />
 
-        <section data-ui="resume-section" aria-labelledby="education-title">
+        <section
+          data-ui="resume-section"
+          data-analytics-section="education"
+          aria-labelledby="education-title"
+        >
           <h2 id="education-title" data-ui="resume-section-title">
             Formação Acadêmica
           </h2>
@@ -278,6 +311,7 @@ export default function App() {
 
         <section
           data-ui="resume-section"
+          data-analytics-section="additional_education"
           aria-labelledby="additional-education-title"
         >
           <h2 id="additional-education-title" data-ui="resume-section-title">
@@ -297,7 +331,11 @@ export default function App() {
 
         <div data-ui="resume-divider" aria-hidden="true" />
 
-        <section data-ui="resume-section" aria-labelledby="skills-title">
+        <section
+          data-ui="resume-section"
+          data-analytics-section="skills"
+          aria-labelledby="skills-title"
+        >
           <h2 id="skills-title" data-ui="resume-section-title">
             Habilidades
           </h2>
