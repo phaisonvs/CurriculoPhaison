@@ -1,10 +1,10 @@
 import { Download, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 const summaryItems = [
-  "Especialista em e-commerce, CRO | UX/UI, Front-end, Acquisition e Integrações, com +11 anos de trajetória em design e marketing digital.",
-  "Idealizo e direciono experiências digitais orientadas a funil de conversão, KPIs e evolução contínua de resultado.",
-  "Conecto tracking, front-end e sustentação operacional na evolução de e-commerces, LPs e jornadas de negócio.",
-  "Atuo com UX/UI para e-commerce, LPs e produtos digitais, prototipação em Figma e Framer, GTM, testes A/B, integrações como Salesforce, Wake, VTEX e Shopify, e evolução com AI, IDEs e Vibe Coding.",
+  "Especialista em CRO, UX/UI, front-end e integrações, com mais de 11 anos de trajetória em design e marketing digital.",
+  "Atuação na evolução de e-commerces, landing pages e jornadas digitais, conectando experiência, conversão, mensuração e sustentação operacional.",
+  "Perfil híbrido entre prototipação, front-end, testes A/B, tracking, acionamentos e integrações com ecossistemas como Wake, Salesforce, VTEX e Shopify.",
+  "Vivência na conexão entre design, tecnologia e resultado, com foco em reduzir atritos e sustentar a evolução contínua de experiências digitais.",
 ];
 
 const contactItems = [
@@ -52,17 +52,17 @@ const downloadActions = [
 
 const experiences = [
   {
-    title: "PO/UX/UI/Front-ender de E-commerces - Atuação Híbrida",
+    title: "UX/UI Designer | CRO | Front-end e Integrações",
     period: "2020 – Até o momento",
     company: "Grupo Mysa - ABC da Construção",
     current: true,
     bullets: [
-      "Atuei na criação e evolução de 4 e-commerce com UX/UI, Front/Back-end e CRO.",
-      "Atuei como PO de integrações: backlog, prioridades e sprints, clientes e agências.",
-      "Prototipei soluções no Figma focando em usabilidade e redução de atritos.",
-      "Implementei melhorias, evoluções e correções de bugs de Front/Back-end na Wake e Salesforce.",
-      "Executei CRO hands-on: hipóteses, testes A/B (scripts de tags) e eventos via GTM, para evoluir a conversão em páginas estratégicas.",
-      "Apoiei entregas no contexto de integrações do e-commerce (APIs/ERP/Salesforce).",
+      "Liderei a criação e evolução de 4 operações de e-commerce, conectando UX/UI, front-end, CRO e integrações.",
+      "Conduzi backlog, prioridades e sprints em frentes que envolviam clientes, agências e times técnicos.",
+      "Estruturei soluções em Figma com foco em usabilidade, redução de atritos e melhoria da experiência.",
+      "Implementei melhorias, evoluções e correções em fluxos e páginas no contexto de Wake e Salesforce.",
+      "Direcionei hipóteses de CRO, testes A/B, scripts de tags, eventos e acionamentos via GTM para evolução de páginas e fluxos estratégicos.",
+      "Atuei em entregas ligadas a integrações de e-commerce e ecossistemas conectados, incluindo APIs, ERP e Salesforce.",
     ],
   },
   {
@@ -71,8 +71,8 @@ const experiences = [
     company: "Grupo Buzatto's",
     bullets: [
       "Produção de peças e campanhas digitais com foco em aquisição e conversão.",
-      "Apoio à estratégia e execução de marketing digital (criativos, landing pages e comunicação).",
-      "Criei materiais digitais e gráficos para empresas do grupo.",
+      "Apoio à estratégia e à execução de marketing digital, incluindo criativos, landing pages e comunicação.",
+      "Criação de materiais digitais e gráficos para empresas do grupo.",
     ],
   },
   {
@@ -80,7 +80,7 @@ const experiences = [
     period: "2017 – 2019",
     company: "Kickball",
     bullets: [
-      "Coordenei entregas e qualidade de design com equipe (prazos, revisão e alinhamentos).",
+      "Coordenei entregas e a qualidade do design com a equipe, incluindo prazos, revisão e alinhamentos.",
       "Produção de materiais digitais e identidade visual para diferentes clientes.",
       "Organização de demandas e fluxo de trabalho do time.",
     ],
@@ -94,12 +94,12 @@ const education = {
 };
 
 const skills = [
-  "UX/UI Design (Figma, Framer)",
-  "Front-End (HTML, CSS, JS, TypeScript)",
-  "CRO e testes A/B (GTM)",
-  "Motion Design (After Effects)",
-  "Branding & Design Gráfico (Adobe Suite)",
-  "Integrações Salesforce/Wake",
+  "Conversão e Mensuração: CRO, testes A/B, GTM, eventos e análise de jornada",
+  "UX/UI e Prototipação: Figma, Framer e prototipação de interfaces",
+  "Front-end: HTML, CSS, JavaScript e TypeScript",
+  "Integrações e Ecossistemas: Salesforce, Wake, VTEX e Shopify",
+  "Branding e Design Gráfico: Adobe Suite",
+  "Motion: After Effects",
 ];
 
 export default function App() {
@@ -108,6 +108,7 @@ export default function App() {
       <article data-ui="resume-sheet">
         <header data-ui="resume-header">
           <h1 data-ui="resume-title-large">PHAISON VIEIRA SIMÕES</h1>
+          <p data-ui="resume-metadata">CRO | UX/UI, Front-end e Integrações</p>
           <div data-ui="resume-contact-group">
             {contactItems.map((item) => {
               const Icon = item.icon;
