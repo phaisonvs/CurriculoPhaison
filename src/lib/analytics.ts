@@ -9,12 +9,22 @@ export type ResumeSectionName =
 
 export type ResumeContactMethod = "email" | "whatsapp" | "linkedin";
 
+export const resumeTimeOnPageThresholds = [30, 60, 120, 300, 600] as const;
+
+export type ResumeTimeOnPageThreshold =
+  (typeof resumeTimeOnPageThresholds)[number];
+
 type ResumeEventName =
   | "resume_page_view"
   | "resume_section_view"
   | "resume_contact_click"
   | "resume_print_click"
-  | "resume_scroll_depth";
+  | "resume_scroll_depth"
+  | "resume_time_on_page_30s"
+  | "resume_time_on_page_60s"
+  | "resume_time_on_page_120s"
+  | "resume_time_on_page_300s"
+  | "resume_time_on_page_600s";
 
 type ResumeAnalyticsEvent = {
   event: "resume_event";
@@ -43,6 +53,18 @@ let transport: AnalyticsTransport = "off";
 const pageViewSent = { current: false };
 const seenSections = new Set<ResumeSectionName>();
 const seenScrollDepths = new Set<number>();
+const seenTimeOnPageThresholds = new Set<ResumeTimeOnPageThreshold>();
+
+const timeOnPageEventNameByThreshold: Record<
+  ResumeTimeOnPageThreshold,
+  ResumeEventName
+> = {
+  30: "resume_time_on_page_30s",
+  60: "resume_time_on_page_60s",
+  120: "resume_time_on_page_120s",
+  300: "resume_time_on_page_300s",
+  600: "resume_time_on_page_600s",
+};
 
 function getResumeWindow() {
   return window as ResumeAnalyticsWindow;
@@ -228,5 +250,20 @@ export function trackResumeScrollDepth(scrollDepth: 25 | 50 | 75 | 90) {
     scroll_depth: scrollDepth,
     scroll_bucket: `${scrollDepth}%`,
     placement: "page_scroll",
+  });
+}
+
+export function trackResumeTimeOnPage(
+  thresholdSeconds: ResumeTimeOnPageThreshold,
+) {
+  if (seenTimeOnPageThresholds.has(thresholdSeconds)) {
+    return;
+  }
+
+  seenTimeOnPageThresholds.add(thresholdSeconds);
+  emitResumeEvent({
+    event: "resume_event",
+    event_name: timeOnPageEventNameByThreshold[thresholdSeconds],
+    page_type: "resume",
   });
 }

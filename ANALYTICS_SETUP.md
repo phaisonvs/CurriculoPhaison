@@ -13,6 +13,11 @@
 - `resume_contact_click`
 - `resume_print_click`
 - `resume_scroll_depth`
+- `resume_time_on_page_30s`
+- `resume_time_on_page_60s`
+- `resume_time_on_page_120s`
+- `resume_time_on_page_300s`
+- `resume_time_on_page_600s`
 
 ## What to create in Google
 
@@ -23,11 +28,13 @@
    - 1 Custom Event trigger for `resume_event`
    - 1 GA4 Event tag that uses `event_name` as the event name
    - Data Layer variables for `event_name`, `section_name`, `contact_method`, `placement`, `scroll_depth`, and `scroll_bucket`
+   - No extra Data Layer variables are required for the time-on-page events if you keep the minimal payload
 4. In GA4, register custom dimensions for:
    - `section_name`
    - `contact_method`
    - `placement`
    - `scroll_bucket`
+   - No extra custom dimensions are required for the time-on-page events
 
 ## What to put in the app
 
@@ -53,6 +60,8 @@ The build workflow will read them during deploy.
 - If no env values exist, tracking stays off.
 - PDF generation disables analytics automatically so CI builds do not pollute your data.
 - For manual testing, you can append `?disable_tracking=1` to the URL to force analytics off.
+- Time-on-page events count only while the tab is visible.
+- Each time-on-page threshold fires at most once per page load.
 
 ## How to test
 
@@ -63,7 +72,14 @@ The build workflow will read them during deploy.
    - LinkedIn
    - print
 3. Scroll through the page and confirm the section and scroll events fire once.
-4. Check GA4 DebugView for the event stream.
+4. Keep the tab visible and confirm the time-on-page events fire once at:
+   - 30 seconds
+   - 60 seconds
+   - 120 seconds
+   - 300 seconds
+   - 600 seconds
+5. Switch to another tab and back to confirm the timer pauses while hidden.
+6. Check GA4 DebugView for the event stream.
 
 ## Success criteria
 
