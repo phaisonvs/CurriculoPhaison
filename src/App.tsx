@@ -1,139 +1,167 @@
-import { Separator } from "./components/ui/separator";
+const summaryItems = [
+  "UXE Designer, com +10 anos de experiência em UX/UI, Front/Back-end e CRO.",
+  "Especialista em e-commerces, criação de interfaces, LPS e Aquisição CRO.",
+  "Prototipagem (Figma, Framer), HTML, CSS, JS e GTM. Capaz de integrar soluções digitais com foco em performance, experiência e resultado.",
+  "Especializando em AI, IDEs, Vibe Coding etc.",
+];
+
+const contactItems = [
+  "Belo Horizonte, Brasil",
+  "phaison.uxe@gmail.com",
+  "+55 31 99203-1320",
+  "https://www.linkedin.com/in/phaisonvieiradesigner/",
+];
+
+const experiences = [
+  {
+    title: "PO/UX/UI/Front-ender de E-commerces - Atuação Híbrida",
+    period: "2020 – Até o momento",
+    company: "Grupo Mysa - ABC da Construção",
+    bullets: [
+      "Atuei na criação e evolução de 4 e-commerce com UX/UI, Front/Back-end e CRO.",
+      "Atuei como PO de integrações: backlog, prioridades e sprints, clientes e agências.",
+      "Prototipei soluções no Figma focando em usabilidade e redução de atritos.",
+      "Implementei melhorias, evoluções e correções de bugs de Front/Back-end na Wake e Salesforce.",
+      "Executei CRO hands-on: hipóteses, testes A/B (scripts de tags) e eventos via GTM, para evoluir a conversão em páginas estratégicas.",
+      "Apoiei entregas no contexto de integrações do e-commerce (APIs/ERP/Salesforce).",
+    ],
+  },
+  {
+    title: "Analista de Marketing Digital",
+    period: "2020",
+    company: "Grupo Buzatto's",
+    bullets: [
+      "Produção de peças e campanhas digitais com foco em aquisição e conversão.",
+      "Apoio à estratégia e execução de marketing digital (criativos, landing pages e comunicação).",
+      "Criei materiais digitais e gráficos para empresas do grupo.",
+    ],
+  },
+  {
+    title: "Coordenador de Design",
+    period: "2017 – 2019",
+    company: "Kickball",
+    bullets: [
+      "Coordenei entregas e qualidade de design com equipe (prazos, revisão e alinhamentos).",
+      "Produção de materiais digitais e identidade visual para diferentes clientes.",
+      "Organização de demandas e fluxo de trabalho do time.",
+    ],
+  },
+];
+
+const education = {
+  title: "Superior em Design Gráfico",
+  period: "2012 – 2015",
+  institution: "Centro Universitário de Belo Horizonte (UNI-BH)",
+};
+
+const skills = [
+  "UX/UI Design (Figma, Framer)",
+  "Front-End (HTML, CSS, JS, TypeScript)",
+  "CRO e testes A/B (GTM)",
+  "Motion Design (After Effects)",
+  "Branding & Design Gráfico (Adobe Suite)",
+  "Integrações Salesforce/Wake",
+];
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gray-100 p-8 flex items-center justify-center">
-      {/* A4 size container: 210mm x 297mm = 794px x 1123px at 96 DPI */}
-      <div className="w-[794px] h-[1123px] bg-white shadow-2xl p-12 overflow-hidden">
-        {/* Header */}
-        <header className="mb-4">
-          <h1 className="mb-2 font-bold text-center">PHAISON VIEIRA SIMÕES</h1>
-          <div className="text-gray-600 text-xs text-center space-y-0.5">
-            <p>Belo Horizonte, Brasil | phaison.uxe@gmail.com | +55 31 99203-1320</p>
-            <p>https://www.linkedin.com/in/phaisonvieiradesigner/</p>
+    <main data-ui="resume-page">
+      <article data-ui="resume-sheet">
+        <header data-ui="resume-header">
+          <h1 data-ui="resume-title-large">PHAISON VIEIRA SIMÕES</h1>
+          <div data-ui="resume-metadata-group">
+            {contactItems.map((item) => (
+              <p key={item} data-ui="resume-metadata">
+                {item}
+              </p>
+            ))}
           </div>
         </header>
 
-        <Separator className="my-3" />
+        <div data-ui="resume-divider" aria-hidden="true" />
 
-        {/* Resumo Profissional */}
-        <section className="mb-4">
-          <h2 className="mb-2 font-bold uppercase tracking-wide text-sm">Resumo Profissional</h2>
-          <ul className="list-disc list-outside ml-4 space-y-1 text-gray-700 text-xs leading-relaxed">
-            <li>UXE Designer, com +10 anos de experiência em UX/UI, Front/Back-end e CRO.</li>
-            <li>Especialista em e-commerces, criação de interfaces, LPS e Aquisição CRO.</li>
-            <li>Prototipagem (Figma, Framer), HTML, CSS, JS e GTM. Capaz de integrar soluções digitais com foco em performance, experiência e resultado.</li>
-            <li>Especializando em AI, IDEs, Vibe Coding etc.</li>
+        <section data-ui="resume-section" aria-labelledby="summary-title">
+          <h2 id="summary-title" data-ui="resume-section-title">
+            Resumo Profissional
+          </h2>
+          <ul data-ui="resume-list" data-variant="summary">
+            {summaryItems.map((item) => (
+              <li key={item} data-ui="resume-list-item">
+                {item}
+              </li>
+            ))}
           </ul>
         </section>
 
-        <Separator className="my-3" />
+        <div data-ui="resume-divider" aria-hidden="true" />
 
-        {/* Experiência Profissional */}
-        <section className="mb-4">
-          <h2 className="mb-2 font-bold uppercase tracking-wide text-sm">Experiência Profissional</h2>
-          
-          <div className="mb-3">
-            <div className="flex justify-between items-baseline mb-1">
-              <h3 className="font-bold text-xs">PO/UX/UI/Front-ender de E-commerces - Atuação Híbrida</h3>
-              <span className="text-gray-600 text-xs">2020 – Até o momento</span>
-            </div>
-            <p className="text-gray-600 text-xs mb-1">Grupo Mysa - ABC da Construção</p>
-            <ul className="list-disc list-outside ml-4 space-y-0.5 text-gray-700 text-xs leading-relaxed">
-              <li>Atuei na criação e evolução de 4 e-commerce com UX/UI, Front/Back-end e CRO.</li>
-              <li>Atuei como PO de integrações: backlog, prioridades e sprints, clientes e agências.</li>
-              <li>Prototipei soluções no Figma focando em usabilidade e redução de atritos.</li>
-              <li>Implementei melhorias, evoluções e correções de bugs de Front/Back-end na Wake e Salesforce.</li>
-              <li>Executei CRO hands-on: hipóteses, testes A/B (scripts de tags) e eventos via GTM, para evoluir a conversão em páginas estratégicas.</li>
-              <li>Apoiei entregas no contexto de integrações do e-commerce (APIs/ERP/Salesforce).</li>
-            </ul>
-          </div>
+        <section data-ui="resume-section" aria-labelledby="experience-title">
+          <h2 id="experience-title" data-ui="resume-section-title">
+            Experiência Profissional
+          </h2>
 
-          <div className="mb-3">
-            <div className="flex justify-between items-baseline mb-1">
-              <h3 className="font-bold text-xs">Analista de Marketing Digital</h3>
-              <span className="text-gray-600 text-xs">2020</span>
-            </div>
-            <p className="text-gray-600 text-xs mb-1">Grupo Buzatto's</p>
-            <ul className="list-disc list-outside ml-4 space-y-0.5 text-gray-700 text-xs leading-relaxed">
-              <li>Produção de peças e campanhas digitais com foco em aquisição e conversão.</li>
-              <li>Apoio à estratégia e execução de marketing digital (criativos, landing pages e comunicação).</li>
-              <li>Criei materiais digitais e gráficos para empresas do grupo.</li>
-            </ul>
-          </div>
+          {experiences.map((experience) => (
+            <article key={experience.title} data-ui="resume-entry">
+              <div data-ui="resume-entry-header">
+                <h3 data-ui="resume-entry-title">{experience.title}</h3>
+                <span data-ui="resume-metadata">{experience.period}</span>
+              </div>
+              <p data-ui="resume-helper">{experience.company}</p>
+              <ul data-ui="resume-list" data-variant="entry">
+                {experience.bullets.map((bullet) => (
+                  <li key={bullet} data-ui="resume-list-item">
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </section>
 
-          <div className="mb-2">
-            <div className="flex justify-between items-baseline mb-1">
-              <h3 className="font-bold text-xs">Coordenador de Design</h3>
-              <span className="text-gray-600 text-xs">2017 – 2019</span>
+        <div data-ui="resume-divider" aria-hidden="true" />
+
+        <section data-ui="resume-section" aria-labelledby="education-title">
+          <h2 id="education-title" data-ui="resume-section-title">
+            Formação Acadêmica
+          </h2>
+
+          <article data-ui="resume-entry">
+            <div data-ui="resume-entry-header">
+              <h3 data-ui="resume-entry-title">{education.title}</h3>
+              <span data-ui="resume-metadata">{education.period}</span>
             </div>
-            <p className="text-gray-600 text-xs mb-1">Kickball</p>
-            <ul className="list-disc list-outside ml-4 space-y-0.5 text-gray-700 text-xs leading-relaxed">
-              <li>Coordenei entregas e qualidade de design com equipe (prazos, revisão e alinhamentos).</li>
-              <li>Produção de materiais digitais e identidade visual para diferentes clientes.</li>
-              <li>Organização de demandas e fluxo de trabalho do time.</li>
-            </ul>
+            <p data-ui="resume-helper">{education.institution}</p>
+          </article>
+        </section>
+
+        <div data-ui="resume-divider" aria-hidden="true" />
+
+        <section data-ui="resume-section" aria-labelledby="skills-title">
+          <h2 id="skills-title" data-ui="resume-section-title">
+            Habilidades
+          </h2>
+
+          <div data-ui="resume-skills-grid">
+            {skills.map((skill) => (
+              <div key={skill} data-ui="resume-skill-item">
+                <p data-ui="resume-paragraph">
+                  <span aria-hidden="true">•</span>
+                  {skill}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
 
-        <Separator className="my-3" />
+        <div data-ui="resume-divider" aria-hidden="true" />
 
-        {/* Formação Acadêmica */}
-        <section className="mb-4">
-          <h2 className="mb-2 font-bold uppercase tracking-wide text-sm">Formação Acadêmica</h2>
-          
-          <div className="mb-2">
-            <div className="flex justify-between items-baseline mb-1">
-              <h3 className="font-bold text-xs">Superior em Design Gráfico</h3>
-              <span className="text-gray-600 text-xs">2012 – 2015</span>
-            </div>
-            <p className="text-gray-600 text-xs">Centro Universitário de Belo Horizonte (UNI-BH)</p>
-          </div>
+        <section data-ui="resume-section" aria-labelledby="languages-title">
+          <h2 id="languages-title" data-ui="resume-section-title">
+            Idiomas
+          </h2>
+          <p data-ui="resume-paragraph">Inglês – Básico</p>
         </section>
-
-        <Separator className="my-3" />
-
-        {/* Habilidades */}
-        <section className="mb-4">
-          <h2 className="mb-2 font-bold uppercase tracking-wide text-sm">Habilidades</h2>
-          
-          <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-            <div>
-              <p className="text-gray-700 text-xs leading-relaxed"><span className="font-bold">•</span> UX/UI Design (Figma, Framer)</p>
-            </div>
-            
-            <div>
-              <p className="text-gray-700 text-xs leading-relaxed"><span className="font-bold">•</span> Front-End (HTML, CSS, JS, TypeScript)</p>
-            </div>
-            
-            <div>
-              <p className="text-gray-700 text-xs leading-relaxed"><span className="font-bold">•</span> CRO e testes A/B (GTM)</p>
-            </div>
-            
-            <div>
-              <p className="text-gray-700 text-xs leading-relaxed"><span className="font-bold">•</span> Motion Design (After Effects)</p>
-            </div>
-
-            <div>
-              <p className="text-gray-700 text-xs leading-relaxed"><span className="font-bold">•</span> Branding & Design Gráfico (Adobe Suite)</p>
-            </div>
-
-            <div>
-              <p className="text-gray-700 text-xs leading-relaxed"><span className="font-bold">•</span> Integrações Salesforce/Wake</p>
-            </div>
-          </div>
-        </section>
-
-        <Separator className="my-3" />
-
-        {/* Idiomas */}
-        <section>
-          <h2 className="mb-2 font-bold uppercase tracking-wide text-sm">Idiomas</h2>
-          <p className="text-gray-700 text-xs leading-relaxed">
-            Inglês – Básico
-          </p>
-        </section>
-      </div>
-    </div>
+      </article>
+    </main>
   );
 }
