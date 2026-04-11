@@ -218,20 +218,20 @@ svg {
 [data-ui='resume-entry-header'] {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: baseline;
-  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
 }
 
 [data-ui='resume-entry-header'] > [data-ui='resume-metadata'] {
   flex: 0 0 auto;
-  text-align: left;
+  text-align: right;
   white-space: nowrap;
 }
 
 [data-ui='resume-entry-title'] {
   margin: 0;
-  flex: 0 1 auto;
+  flex: 1 1 auto;
   min-width: 0;
   font-size: var(--resume-subtitle-size);
   font-weight: 700;
@@ -287,9 +287,9 @@ svg {
 
 [data-ui='resume-additional-education-grid'] {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
-  gap: 12px 18px;
+  gap: 12px;
 }
 
 [data-ui='resume-additional-education-grid'] > [data-ui='resume-entry'] {
@@ -808,8 +808,9 @@ svg {
   }
 
   [data-current='true'] [data-ui='resume-entry-header'] {
-    align-items: baseline;
-    gap: 6px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
   }
 
   [data-current='true'] [data-ui='resume-metadata'] {
@@ -833,6 +834,11 @@ svg {
 
   [data-current='true'] [data-ui='resume-experience-period-compact'] {
     font-size: 8.8px;
+    line-height: 13px;
+  }
+
+  [data-current='true'] [data-ui='resume-entry-title'] {
+    font-size: 10.6px;
     line-height: 13px;
   }
 
