@@ -2,6 +2,7 @@
 
 import { useResumeAnalytics } from "./hooks/useResumeAnalytics";
 import {
+  trackResumeEmailModalOpen,
   trackResumeContactClick,
   trackResumePrintClick,
   type ResumeContactMethod,
@@ -430,7 +431,7 @@ export default function App() {
   };
 
   const handleOpenEmailModal = () => {
-    trackResumeContactClick("email", "email_modal_open");
+    trackResumeEmailModalOpen();
     setIsEmailModalOpen(true);
   };
 

@@ -17,6 +17,7 @@ export type ResumeTimeOnPageThreshold =
 type ResumeEventName =
   | "resume_page_view"
   | "resume_section_view"
+  | "resume_email_modal_open"
   | "resume_contact_click"
   | "resume_print_click"
   | "resume_scroll_depth"
@@ -211,6 +212,16 @@ export function trackResumeSectionView(sectionName: ResumeSectionName) {
     page_type: "resume",
     section_name: sectionName,
     placement: "section_observer",
+  });
+}
+
+export function trackResumeEmailModalOpen() {
+  emitResumeEvent({
+    event: "resume_event",
+    event_name: "resume_email_modal_open",
+    page_type: "resume",
+    section_name: "header",
+    placement: "email_modal_open",
   });
 }
 

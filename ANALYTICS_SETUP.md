@@ -10,6 +10,7 @@
 
 - `resume_page_view`
 - `resume_section_view`
+- `resume_email_modal_open`
 - `resume_contact_click`
 - `resume_print_click`
 - `resume_scroll_depth`
@@ -71,15 +72,18 @@ The build workflow will read them during deploy.
    - WhatsApp
    - LinkedIn
    - print
-3. Scroll through the page and confirm the section and scroll events fire once.
-4. Keep the tab visible and confirm the time-on-page events fire once at:
+3. Confirm the email flow splits into:
+   - `resume_email_modal_open` when the modal opens
+   - `resume_contact_click` with `contact_method=email` when Gmail or Outlook is chosen
+4. Scroll through the page and confirm the section and scroll events fire once.
+5. Keep the tab visible and confirm the time-on-page events fire once at:
    - 30 seconds
    - 60 seconds
    - 120 seconds
    - 300 seconds
    - 600 seconds
-5. Switch to another tab and back to confirm the timer pauses while hidden.
-6. Check GA4 DebugView for the event stream.
+6. Switch to another tab and back to confirm the timer pauses while hidden.
+7. Check GA4 DebugView for the event stream.
 
 ## Success criteria
 
