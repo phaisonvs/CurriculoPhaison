@@ -1,11 +1,11 @@
 ﻿import * as DialogPrimitive from "@radix-ui/react-dialog";
 
-import { useResumeAnalytics } from "@/hooks/useResumeAnalytics";
+import { useResumeAnalytics } from "./hooks/useResumeAnalytics";
 import {
   trackResumeContactClick,
   trackResumePrintClick,
   type ResumeContactMethod,
-} from "@/lib/analytics";
+} from "./lib/analytics";
 import { ArrowUpRight, Linkedin, Mail, MapPin, Printer, X } from "lucide-react";
 import { useState, type ComponentType, type SVGProps } from "react";
 
@@ -156,7 +156,7 @@ const printContactLine = [
   "Localiza\u00E7\u00E3o: Contagem, Brasil",
   `E-mail: ${contactEmailAddress}`,
   "WhatsApp: +55 31 99203-1320",
-  "LinkedIn: linkedin.com/in/phaisonvieiradesigner",
+  "LinkedIn: linkedin.com/in/phaison-cro-ux",
 ].join(" | ");
 
 const education = {
@@ -376,7 +376,7 @@ export default function App() {
     {
       kind: "link",
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/phaisonvieiradesigner/",
+      href: "https://www.linkedin.com/in/phaison-cro-ux",
       icon: Linkedin,
       contactMethod: "linkedin",
       target: "_blank",
@@ -705,4 +705,3 @@ export default function App() {
     </main>
   );
 }
-

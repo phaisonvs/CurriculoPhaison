@@ -8,7 +8,7 @@ import {
   trackResumeSectionView,
   trackResumeTimeOnPage,
   type ResumeSectionName,
-} from "@/lib/analytics";
+} from "../lib/analytics";
 
 const scrollThresholds = [25, 50, 75, 90] as const;
 const sectionSelector = "[data-analytics-section]";
